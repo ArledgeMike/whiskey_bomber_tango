@@ -1,0 +1,16 @@
+{
+	"resources":[
+		"audio.ogg",
+		"audio.m4a",
+		"audio.mp3",
+		"audio.ac3"
+	],
+	"spritemap":{
+		"Main_Music":{
+			"start": 0,
+			"end": 60,
+			"loop":true
+		}
+	}
+	
+}
