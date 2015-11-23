@@ -1,5 +1,7 @@
 WBT.Preloader = function(game){
+	
 	this.ready = false;
+
 }
 
 WBT.Preloader.prototype ={
@@ -7,9 +9,9 @@ WBT.Preloader.prototype ={
 	preload:function(){
 		
 		this.background = this.add.sprite(0,0, 'main_menu_bg');
-		this.splash_screen = this.add.sprite(0,0, 'sprites', 'main_menu_title');
+		this.splash_screen = this.add.sprite(0,0, '/game_assets/scenery/main_menu_title.png', 'main_menu_title');
 		
-		this.preloader_bar = this.add.sprite(this.game.world.centerX -127.5, this.game.world.centerY, 'sprites', 'progress');
+		this.preloader_bar = this.add.sprite(this.game.world.centerX -127.5, this.game.world.centerY, '/game_assets/scenery/main_menu_loading.png', 'progress');
 		this.load.setPreloadSprite(this.preloader_bar);
 		
 		this.game.load.image('main_menu_bg', 'game_assets/scenery/main_menu.jpg');
