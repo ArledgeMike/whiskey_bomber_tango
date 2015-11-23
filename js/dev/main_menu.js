@@ -73,7 +73,7 @@ WBT.Main_Menu.prototype ={
 	
 	update:function(){
         
-		if(!this.jet_fired){
+		if(!this.jets_fired){
 			
 			this.background.tilePosition.x -=2;
 			
@@ -116,6 +116,68 @@ WBT.Main_Menu.prototype ={
 		
 		this.intro_tween.start();
 		
+		this.intro_flying_timer = this.game.time.create(this.game);
+		this.intro_flying_timer.add(1100, function(){
+			
+		});
+		
+		
+		this.engine_burn_timer = this.game.time.crate(this.game);
+	    this.engine_burn_timer.add(2000, function(){
+		   this.start_engines();
+		   this.jets_fired = true;
+		   
+		}, this);
+		
+		this.engine_burn_timer.start();
+		
+		this.initial_pause_timer = this.game.time.create(this.game);
+		
+		this.initial_pause_timer.add(2500, function(){
+			this.hover_ship = false
+			
+		}, this);
+		
+		this.initial_pause_timer.start();
+		
+
+
+		
+	},
+	
+	hovers_ship_animation:function(){
+		
+		this.hover_ship = true;
+		this.hover_ship_timer = this.game.time.create(this.game);
+		
+		this.hover_ship_timer.add(2000, function(){
+			
+			this.hover_ship = false;
+			this.player.angle = 0;
+			
+		}, this);
+		
+		this.hover_ship_timer.start();
+		
+	},
+	
+	start_engines:function(){
+		
+		this.emitter = this.game.add.emitter(this.game.world.centerX, this.game.wold.centerY, 400);
+		this.emitter.makeParticles('sprites',['fire1']);
+		this.emitter.gravity = 200;
+		this.emitter.setAlpha(1,0,2000);
+		this.emitter.setScale(0.4,0,0.4,0,2000);
+		
+		this.emitter.start(false, 3000,3);
+		this.burn_engines = true;
+		this.sound.play('rocket_start');
+		
+	},
+	
+	start_game: function(){
+	  this.sound.stop('aronara');
+	  this.state.start(this.player_stats.return_to_state);	
 		
 	}
 	
