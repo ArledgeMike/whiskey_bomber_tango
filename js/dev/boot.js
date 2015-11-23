@@ -11,7 +11,7 @@ WBT.Boot = function (game) {
    
 };
 
-CanyonRunner.Boot.prototype = {
+WBT.Boot.prototype = {
 
     init: function () {
 
@@ -20,9 +20,10 @@ CanyonRunner.Boot.prototype = {
 
         if (this.game.device.desktop)
         {
-            this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.scale.setMinMax(480, 260, 1024, 768);
             this.scale.pageAlignHorizontally = true;
+            this.scale.forceLandscape = true;
             this.scale.pageAlignVertically = true;
             this.scale.setScreenSize(true);
             this.scale.refresh();
