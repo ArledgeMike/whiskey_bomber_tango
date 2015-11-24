@@ -28,11 +28,11 @@ WBT.Preloader.prototype ={
 			
 	    if(this.game.device.firefox || this.game.device.chrome || this.game.device.chromeOS){
 			
-			this.game.load.audiosprite('sound', 'game_assets/music/audio.mp3', 'game_assets/music/audio.json')
+			//this.game.load.audiosprite('sound', 'game_assets/music/audio.mp3', 'game_assets/music/audio.json')
 			
 		}else{
 			
-		    this.game.load.audiosprite('sound', 'game_assets/music/audio.m4a', 'game_assets/music/audio.json')	
+		  //  this.game.load.audiosprite('sound', 'game_assets/music/audio.m4a', 'game_assets/music/audio.json')	
 		
 		}
 
@@ -58,11 +58,11 @@ WBT.Preloader.prototype ={
 	update:function(){
 		var t = this;
 
-		if(this.cache.isSoundDecoded('sound') && this.ready == false  ){
-
+		//if(this.cache.isSoundDecoded('sound') && this.ready == false  ){
+console.log("we out of there")
 			this.state.start("Main_Menu");
 		
-		}
+		//}
 		
 	
 	}
