@@ -20,12 +20,11 @@ WBT.Boot.prototype = {
 
         if (this.game.device.desktop)
         {
-            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.scale.setMinMax(480, 260, 1024, 768);
             this.scale.pageAlignHorizontally = true;
-            this.scale.forceLandscape = true;
             this.scale.pageAlignVertically = true;
-            this.scale.setScreenSize(true);
+
             this.scale.refresh();
         }
         else
@@ -38,7 +37,7 @@ WBT.Boot.prototype = {
             this.scale.setResizeCallback(this.gameResized, this);
             this.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
             this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
-            this.scale.setScreenSize(true);
+
             this.scale.refresh();
         }
 
@@ -47,11 +46,11 @@ WBT.Boot.prototype = {
     preload: function () {
         //Load Texture Atlas and Tilemap
       //  this.game.load.atlasJSONHash('sprites', 'assets/sprites/sprites.png', 'assets/sprites/sprites.json');
-      //  this.game.load.image('desert-open', 'assets/backgrounds/desert-open.png');
+        this.game.load.image('main_menu_bg', 'game_assets/scenery/main_menu_bg.jpg');
     },
 
     create: function () {
-
+		//this.main_menu_bg = this.add.sprite(0,0,'main_menu_bg');
         this.state.start('Preloader');
 
     },

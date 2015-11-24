@@ -5,8 +5,8 @@ WBT.Main_Menu = function(game){
 WBT.Main_Menu.prototype ={
 	
 	create:function(){
-		
-		this.sound = this.game.add.audioSprite('sound');
+		console.log("we in the main menu")
+		//this.sound = this.game.add.audioSprite('sound');
 		
 		this.player_stats;
 		
@@ -28,8 +28,8 @@ WBT.Main_Menu.prototype ={
 	    
 		this.background = this.game.add.tileSprite(0,0,1200,600, 'main_menu_bg');
 		this.background.fixedToCamera = true;
-		this.splash_screen = this.add.sprite(0,0,'/game_assets/scenery/main_menu_title.png', 'main_menu_title');
-		
+		this.splash_screen = this.add.sprite(0,0,'game_assets/scenery/main_menu_title.png', 'main_menu_title');
+		/*
 		this.sound.play('main_music');
 		
 		this.sound_btn = this.game.add.button(this.game.world.centerX + 335, this.game.world.centerY - 285, '/game_assets/scenery/start_btn.png', this.toggle_mute, this, 'sound-icon', 'sound-icon','sound-icon');
@@ -68,11 +68,12 @@ WBT.Main_Menu.prototype ={
 		
 		this.start_btn = this.add.button(350,500,'/game_assets/player/skeleton_plane.png', this.start_game, this, 'start_btn', 'start_btn', 'start_btn' );
 		
-			
+			*/
 	},
 	
 	update:function(){
-        
+		console.log("animation that runs the main menu graphics")
+        /*
 		if(!this.jets_fired){
 			
 			this.background.tilePosition.x -=2;
@@ -104,7 +105,7 @@ WBT.Main_Menu.prototype ={
 			this.sound_btn.tinit = 16777215;
 			
 		}
-		
+		*/
 	},
 	
 	intro_flying_scene:function(){
