@@ -7,7 +7,7 @@ WBT.Main_Menu.prototype ={
 	create:function(){
 		console.log("we in the main menu")
 		//this.sound = this.game.add.audioSprite('sound');
-		
+		var t = this;
 		this.player_stats;
 		
 		if(localStorage.getItem('WBT_3182_playerstats') != null  ){
@@ -25,10 +25,64 @@ WBT.Main_Menu.prototype ={
 			}
 			
 		}
-	    
-		this.background = this.game.add.tileSprite(0,0,1200,600, 'main_menu_bg');
-		this.background.fixedToCamera = true;
-		this.splash_screen = this.add.sprite(0,0,'game_assets/scenery/main_menu_title.png', 'main_menu_title');
+		
+			var t = this;
+        this.main_menu_bg = this.add.sprite(0,0,'main_menu_bg');
+		this.splash_screen = this.add.sprite(this.game.world.centerX ,this.game.world.centerY- 90 , 'main_menu_title');
+		this.splash_screen.anchor.setTo(0.5, 0.5);
+	    this.splash_screen.scale.setTo(0.8);
+	    this.start_btn = this.add.button(425,this.game.world.height,'start_btn', this.start_game, this);
+        this.game.time.events.add(300, this.start_btn_in, this);
+		
+		
+	   // if(this.player_stats.top_score > 0 && this.player_stats.top_time > 0){
+			console.log("set styles for scores")
+			this.player_stats_text_style = {
+				font: '40px Helvetica',
+				fill:'#fff',
+				stroke:'#000',
+				strokeThickness: 5,
+				align:'center'
+				
+				
+			}
+		//}
+		this.high_score_string = "High Score:"
+		this.high_score_score =  this.player_stats.top_score 
+		this.game.add.text(25, 25, this.high_score_string, this.player_stats_text_style); 
+		this.game.add.text(25, 75, this.high_score_score, this.player_stats_text_style);
+		
+		this.best_time_string = "Best Time:";
+		this.best_time_time = "02:35:24";//this.player_stats.top_time;
+		this.game.add.text(1000, 25, this.best_time_string, this.player_stats_text_style); 
+		this.game.add.text(1000, 75, this.best_time_time, this.player_stats_text_style);
+		
+		//this.player_stats_string = "High Score: \n " + this.player_stats.top_score + " Best Time: \n " + this.player_stats.top_time;
+		//this.player_stats_text = this.game.add.text(this.game.world.centerX - 350, this.game.world.centerY - 275, this.player_stats_string, this.player_stats_text_style);
+		
+		
+		/*
+	    this.bg = this.add.tileSprite(0,0, this.game.world.width, this.game.world.height, 'bg');
+		this.middle_bg = this.add.tileSprite(0,300, this.game.world.width, this.game.world.height, 'middle_bg');
+		
+    
+		
+
+		//this.cloud_sprites = this.game.add.group();
+		this.game.time.events.loop(3200, create_cloud, this);
+		this.middle_fg = this.add.tileSprite(0,390, this.game.world.width, this.game.world.height, 'middle_fg');
+		this.middle_fg.scale.setTo(1);     
+		this.splash_screen = this.add.sprite(this.game.world.centerX ,this.game.world.centerY- 90 , 'main_menu_title');
+		this.splash_screen.anchor.setTo(0.5, 0.5);
+		this.splash_screen.scale.setTo(0.8);
+		function create_cloud(){
+	
+			var cloud = t.cloud_sprites.create(t.game.world.width, t.game.world.randomY, 'cloud');
+			cloud.scale.setTo( ( Math.random()*.9)+.25  )
+		}
+		*/
+
+		
 		/*
 		this.sound.play('main_music');
 		
@@ -41,21 +95,7 @@ WBT.Main_Menu.prototype ={
 			this.sound_btn.tint = 16711680
 		}
 		
-		if(this.player_stats.top_score > 0 && this.player_stats.top_time > 0){
-			this.player_stats_text_style = {
-				font: '30px Helvetica',
-				fill:'#fff',
-				stroke:'#000',
-				strokeThickness: 5,
-				align:'center'
-				
-				
-			}
-		}
-		
-		this.player_stats_string = "Your top score is: " + this.player_stats.top_score + " and your top time is: " + this.player_stats.top_time;
-		this.player_stats_text = this.game.add.text(this.game.world.centerX - 350, this.game.world.centerY - 275, this.player_stats_string, this.player_stats_text_style);
-		
+	
 		
 		this.player = this.game.add.sprite(64,64, '/game_assets/player/skeleton_plane.png', 'player');
 		this.player.y = 320;
@@ -64,15 +104,19 @@ WBT.Main_Menu.prototype ={
 		this.player.body.collideWorldBounds = true;
 		this.player.body.setSize(64,34,0,15);
 		
-		this.game.time.events.add(300, this.intro_flying_scene, this);
+	
 		
-		this.start_btn = this.add.button(350,500,'/game_assets/player/skeleton_plane.png', this.start_game, this, 'start_btn', 'start_btn', 'start_btn' );
+
 		
 			*/
 	},
 	
 	update:function(){
-		console.log("animation that runs the main menu graphics")
+		//this.cloud_sprites.setAll('x', -2, true, true, 1);
+		//this.cloud_sprites.forEach(this.check_cloud, this, true);
+		
+		
+
         /*
 		if(!this.jets_fired){
 			
@@ -108,77 +152,23 @@ WBT.Main_Menu.prototype ={
 		*/
 	},
 	
-	intro_flying_scene:function(){
+	start_btn_in:function(){
 		
-		this.intro_tween = this.game.add.tween(this.player);
+		this.intro_tween = this.game.add.tween( this.start_btn);
 		this.intro_tween.to({
-			x:420
+			y:550
 		}, 2000);
 		
 		this.intro_tween.start();
 		
-		this.intro_flying_timer = this.game.time.create(this.game);
-		this.intro_flying_timer.add(1100, function(){
-			
-		});
-		
-		
-		this.engine_burn_timer = this.game.time.crate(this.game);
-	    this.engine_burn_timer.add(2000, function(){
-		   this.start_engines();
-		   this.jets_fired = true;
-		   
-		}, this);
-		
-		this.engine_burn_timer.start();
-		
-		this.initial_pause_timer = this.game.time.create(this.game);
-		
-		this.initial_pause_timer.add(2500, function(){
-			this.hover_ship = false
-			
-		}, this);
-		
-		this.initial_pause_timer.start();
 		
 
-
-		
-	},
-	
-	hovers_ship_animation:function(){
-		
-		this.hover_ship = true;
-		this.hover_ship_timer = this.game.time.create(this.game);
-		
-		this.hover_ship_timer.add(2000, function(){
-			
-			this.hover_ship = false;
-			this.player.angle = 0;
-			
-		}, this);
-		
-		this.hover_ship_timer.start();
-		
-	},
-	
-	start_engines:function(){
-		
-		this.emitter = this.game.add.emitter(this.game.world.centerX, this.game.wold.centerY, 400);
-		this.emitter.makeParticles('sprites',['fire1']);
-		this.emitter.gravity = 200;
-		this.emitter.setAlpha(1,0,2000);
-		this.emitter.setScale(0.4,0,0.4,0,2000);
-		
-		this.emitter.start(false, 3000,3);
-		this.burn_engines = true;
-		this.sound.play('rocket_start');
 		
 	},
 	
 	start_game: function(){
-	  this.sound.stop('aronara');
-	  this.state.start(this.player_stats.return_to_state);	
+      console.log(this);
+	 this.state.start('Level_One');	
 		
 	}
 	

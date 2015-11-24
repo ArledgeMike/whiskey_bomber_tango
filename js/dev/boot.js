@@ -6,8 +6,10 @@ WBT = {
 
 WBT.Boot = function (game) {
 
-    game.state.add('Preloader', WBT.Preloader);
-    game.state.add('MainMenu', WBT.Main_Menu);
+   game.state.add('Preloader', WBT.Preloader);
+   game.state.add('Main_Menu', WBT.Main_Menu);
+   game.state.add('Level_One', WBT.Level_One);
+
    
 };
 
@@ -20,11 +22,11 @@ WBT.Boot.prototype = {
 
         if (this.game.device.desktop)
         {
+         
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.scale.setMinMax(480, 260, 1024, 768);
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
-
             this.scale.refresh();
         }
         else
@@ -37,7 +39,6 @@ WBT.Boot.prototype = {
             this.scale.setResizeCallback(this.gameResized, this);
             this.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
             this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
-
             this.scale.refresh();
         }
 
@@ -50,7 +51,7 @@ WBT.Boot.prototype = {
     },
 
     create: function () {
-		//this.main_menu_bg = this.add.sprite(0,0,'main_menu_bg');
+
         this.state.start('Preloader');
 
     },
