@@ -51,6 +51,9 @@ WBT.Boot.prototype = {
         //Load Texture Atlas and Tilemap
       //  this.game.load.atlasJSONHash('sprites', 'assets/sprites/sprites.png', 'assets/sprites/sprites.json');
         this.game.load.image('main_menu_bg', 'game_assets/scenery/main_menu_bg.jpg');
+    	this.game.load.image( 'main_menu_title', 'game_assets/scenery/main_menu_title.png');
+		this.game.load.image('progress_bar', 'game_assets/scenery/main_menu_loading.png');
+		
     },
 
     create: function () {

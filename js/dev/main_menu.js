@@ -167,7 +167,7 @@ WBT.Main_Menu.prototype ={
 	},
 	
 	start_game: function(){
-      console.log(this);
+
 	 this.state.start('Level_One');	
 		
 	}

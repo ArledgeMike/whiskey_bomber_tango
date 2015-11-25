@@ -9,7 +9,7 @@ WBT.Preloader.prototype ={
 	preload:function(){
 		console.log("preloading should add background");
 		
-		this.game.load.image('main_menu_bg', 'game_assets/scenery/main_menu_bg.jpg');
+//		this.game.load.image('main_menu_bg', 'game_assets/scenery/main_menu_bg.jpg');
 	    this.game.load.image('start_btn', 'game_assets/scenery/start_btn.png');
 		this.game.load.image('start_btn_over', 'game_assets/scenery/start_btn_over.png');
 		
@@ -18,9 +18,7 @@ WBT.Preloader.prototype ={
 		this.game.load.image('middle_fg','game_assets/scenery/middle_foreground.png');
 		this.game.load.image('cloud', 'game_assets/scenery/cloud.png');
 		
-		this.game.load.image( 'main_menu_title', 'game_assets/scenery/main_menu_title.png');
-		this.game.load.image('progress_bar', 'game_assets/scenery/main_menu_loading.png');
-		
+
 		this.game.load.spritesheet('whiskey_bomber', 'game_assets/player/skeleton_plane.png', 84, 75);
 		this.game.load.image('bullet', 'game_assets/player/weapons/bullet/bullet.png');
 		this.game.load.image('flask_bomb', 'game_assets/player/weapons/flask_bomb/flask_bomb.png');
